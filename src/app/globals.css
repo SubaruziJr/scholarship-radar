@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+}
+
+html,
+body {
+  background-color: #fbf8f1;
+  color: #15231c;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  /* subtle layered radar / paper atmosphere */
+  background-image:
+    radial-gradient(60rem 60rem at 110% -10%, rgba(198, 241, 53, 0.18), transparent 60%),
+    radial-gradient(50rem 50rem at -10% 10%, rgba(22, 121, 74, 0.08), transparent 55%);
+  background-attachment: fixed;
+  min-height: 100dvh;
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .container-app {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-paper shadow-card;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-ink;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-cream/60 px-3.5 py-2.5 text-ink
+      placeholder:text-ink-faint focus:border-brand focus:bg-paper focus:outline-none
+      focus:ring-2 focus:ring-brand/20 transition;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40
+      focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+  }
+}
+
+/* thin scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cfd8d0 transparent;
+}
+*::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #d6ddd5;
+  border-radius: 99px;
+}
